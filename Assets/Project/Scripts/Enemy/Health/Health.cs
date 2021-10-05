@@ -12,7 +12,6 @@ namespace Project.Scripts.Enemy.Health
         {
             var healthToReduce = amount / maxHealth;
             health.fillAmount -= healthToReduce;
-            Debug.Log(health.fillAmount);
         }
 
         public void ResetHealth()
