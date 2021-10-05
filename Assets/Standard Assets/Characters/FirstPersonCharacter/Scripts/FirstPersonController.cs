@@ -45,6 +45,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         
         //Jeg har tilføjet
         //private Animator anim;
+        public bool MIsWalking => m_IsWalking; 
+        public float MRunSpeed => m_RunSpeed;
+        public CharacterController MCharacterController => m_CharacterController;
 
         // Use this for initialization
         private void Start()
