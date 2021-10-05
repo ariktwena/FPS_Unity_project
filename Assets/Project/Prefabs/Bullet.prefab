@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1a3f4c19a304975938dff0e722aef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
   speed: 50
   lifeDuration: 1
 --- !u!135 &2682577604789041466
@@ -167,7 +168,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9074815063871636460}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2

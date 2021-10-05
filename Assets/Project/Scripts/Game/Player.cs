@@ -1,10 +1,10 @@
+using Project.Scripts.Utils;
 using UnityEngine;
 
 namespace Project.Scripts.Game
 {
     public class Player : MonoBehaviour
     {
-
         //Camera position
         public Camera playerCamera;
 
@@ -42,6 +42,11 @@ namespace Project.Scripts.Game
                 //Make bullet move
                 bulletObject.transform.forward = playerCamera.transform.forward;
             }
+        }
+
+        public void Kill()
+        {
+            
         }
     }
 }

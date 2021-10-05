@@ -1,55 +1,57 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPoolingManager : MonoBehaviour
+namespace Project.Scripts.Utils
 {
-    private static ObjectPoolingManager instance;
-    public static ObjectPoolingManager Instance { get { return instance; } }
-
-    public GameObject bulletPrefab;
-    public int bulletAmount = 20;
-
-    private List<GameObject> bullets;
-
-    // Start is called before the first frame update
-    void Awake()
+    public class ObjectPoolingManager : MonoBehaviour
     {
-        instance = this;
+        private static ObjectPoolingManager instance;
+        public static ObjectPoolingManager Instance { get { return instance; } }
 
-        //Preload bullets
-        bullets = new List<GameObject>(bulletAmount);
+        public GameObject bulletPrefab;
+        public int bulletAmount = 20;
 
-        //Make 20 diabled bullets
-        for(int i = 0 ; i < bulletAmount ; i++)
+        private List<GameObject> bullets;
+
+        // Start is called before the first frame update
+        void Awake()
         {
-            GameObject prefabInstance = Instantiate(bulletPrefab);
-            //Make the bullets show under the manager
-            prefabInstance.transform.SetParent(transform);
-            prefabInstance.SetActive(false);
+            instance = this;
 
-            bullets.Add(prefabInstance);
-        }
-    }
+            //Preload bullets
+            bullets = new List<GameObject>(bulletAmount);
 
-    public GameObject GetBullet()
-    {
-        //Debug.Log("Bullet");
-        //return null;
+            //Make 20 diabled bullets
+            for(int i = 0 ; i < bulletAmount ; i++)
+            {
+                GameObject prefabInstance = Instantiate(bulletPrefab);
+                //Make the bullets show under the manager
+                prefabInstance.transform.SetParent(transform);
+                prefabInstance.SetActive(false);
 
-        //We loop over the billets to find an inactive one
-        foreach (GameObject bullet in bullets)
-        {
-            if (!bullet.activeInHierarchy){
-                bullet.SetActive(true);
-                return bullet;
+                bullets.Add(prefabInstance);
             }
         }
 
-        //If we have no inactive bullets, we make a new one.
-        GameObject prefabInstance = Instantiate(bulletPrefab);
-        prefabInstance.transform.SetParent(transform);
-        bullets.Add(prefabInstance);
-        return prefabInstance;
+        public GameObject GetBullet()
+        {
+            //Debug.Log("Bullet");
+            //return null;
+
+            //We loop over the billets to find an inactive one
+            foreach (GameObject bullet in bullets)
+            {
+                if (!bullet.activeInHierarchy){
+                    bullet.SetActive(true);
+                    return bullet;
+                }
+            }
+
+            //If we have no inactive bullets, we make a new one.
+            GameObject prefabInstance = Instantiate(bulletPrefab);
+            prefabInstance.transform.SetParent(transform);
+            bullets.Add(prefabInstance);
+            return prefabInstance;
+        }
     }
 }
